@@ -1,0 +1,16 @@
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\Camp.exe
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\Camp.deps.json
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\Camp.runtimeconfig.json
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\Camp.runtimeconfig.dev.json
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\Camp.dll
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\ref\Camp.dll
+C:\Users\Dima\source\repos\Camp\Camp\bin\Debug\net5.0\Camp.pdb
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.csproj.AssemblyReference.cache
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.AssemblyInfoInputs.cache
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.AssemblyInfo.cs
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.csproj.CoreCompileInputs.cache
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.dll
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\ref\Camp.dll
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.pdb
+C:\Users\Dima\source\repos\Camp\Camp\obj\Debug\net5.0\Camp.genruntimeconfig.cache
