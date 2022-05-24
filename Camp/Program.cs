@@ -83,10 +83,11 @@ namespace Camp
         public static void WorkWithMatrix()
         {
             Matrix m = new Matrix();
-            m.InputSizeOfMatrix();
-            m.VerticalSnakeInitialization();
+            //m.InputSizeOfMatrix();
+            //m.VerticalSnakeInitialization();
             //m.RandomInitialization();
             //m.Input();
+            m.DiagonalSnakeAutorization(7);
             m.OutputMatrix();
         }
 
@@ -97,9 +98,9 @@ namespace Camp
             //WorkWithCheckClass();
             //WorkWithMeatClass();
             //WorkWithDairyProductsClass();
-            WorkWithStorageClass();
+            //WorkWithStorageClass();
 
-            //WorkWithMatrix();
+            WorkWithMatrix();
         }
 
         

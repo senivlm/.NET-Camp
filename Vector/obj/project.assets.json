@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\.NET-Camp\\Camp\\Camp.csproj",
-      "projectName": "Camp",
-      "projectPath": "E:\\.NET-Camp\\Camp\\Camp.csproj",
+      "projectUniqueName": "E:\\.NET-Camp\\Vector\\Vector.csproj",
+      "projectName": "Vector",
+      "projectPath": "E:\\.NET-Camp\\Vector\\Vector.csproj",
       "packagesPath": "C:\\Users\\Dima\\.nuget\\packages\\",
-      "outputPath": "E:\\.NET-Camp\\Camp\\obj\\",
+      "outputPath": "E:\\.NET-Camp\\Vector\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dima\\AppData\\Roaming\\NuGet\\NuGet.Config",
