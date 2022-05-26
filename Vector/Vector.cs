@@ -170,6 +170,59 @@ namespace Vector
             return resultPair;
         }
 
+
+        public void Bubble()
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+                    if(arr[j+1] > arr[j])
+                    {
+                        int item = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = item;
+                    }
+                }
+            }
+        }
+
+        public void Counting()
+        {
+            int max = arr[0];
+            int min = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] > max)
+                {
+                    max = arr[i];
+                }
+                if(arr[i] < min)
+                {
+                    min = arr[i];
+                }
+            }
+
+            int[] temp = new int[max - min + 1];
+
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                temp[arr[i] - min]++;
+            }
+            int k = 0;
+            for (int i = 0; i < temp.Length; i++)
+            {
+                for (int j = 0; j < temp[i]; j++)
+                {
+                    arr[k] = i + min;
+                    k++;
+                }
+            }
+
+
+        }
+
         //homework
         public void Reversal()
         {

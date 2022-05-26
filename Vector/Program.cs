@@ -36,7 +36,14 @@ namespace Vector
         }
         static void Main(string[] args)
         {
-            WorkWithMatrixClass();
+            //WorkWithMatrixClass();
+
+            Vector vector = new Vector(7);
+            vector.RandomInitialization(1, 10);
+            vector.Counting();
+            Console.WriteLine(vector);
+
+           
         }
     }
 }
