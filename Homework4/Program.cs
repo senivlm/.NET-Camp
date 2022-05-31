@@ -10,7 +10,8 @@ namespace Homework4
             Vector vector = new Vector(arr);
             Console.WriteLine(vector);
 
-            vector.QuickSort(0, arr.Length - 1);
+            //vector.QuickSort(0, arr.Length - 1);
+            vector.SplitMergeSort(0, arr.Length);
             Console.WriteLine(vector);
         }
     }

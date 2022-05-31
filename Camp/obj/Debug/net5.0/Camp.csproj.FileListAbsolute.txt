@@ -21,7 +21,6 @@ E:\.NET-Camp\Camp\bin\Debug\net5.0\Camp.runtimeconfig.dev.json
 E:\.NET-Camp\Camp\bin\Debug\net5.0\Camp.dll
 E:\.NET-Camp\Camp\bin\Debug\net5.0\ref\Camp.dll
 E:\.NET-Camp\Camp\bin\Debug\net5.0\Camp.pdb
-E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.csproj.AssemblyReference.cache
 E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.GeneratedMSBuildEditorConfig.editorconfig
 E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.AssemblyInfoInputs.cache
 E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.AssemblyInfo.cs

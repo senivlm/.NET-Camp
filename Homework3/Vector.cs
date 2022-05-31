@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
 
-namespace Homework4
+namespace Homework3
 {
     class Vector
     {
@@ -37,6 +36,9 @@ namespace Homework4
         }
 
         public Vector() { }
+
+
+        #region Methods
 
         public void RandomInitialization(int a, int b)
         {
@@ -165,103 +167,6 @@ namespace Homework4
             return resultPair;
         }
 
-        public void Merge(int left, int right, int q)
-        {
-            int i = left;
-            int j = q;
-            int[] temp = new int[right - left];
-            int k = 0;
-            while (i < q && j < right)
-            {
-                if(arr[i] < arr[j])
-                {
-                    temp[k] = arr[i];
-                    i++;
-                }
-                else
-                {
-                    temp[k] = arr[j];
-                    j++;
-                }
-                k++;
-            }
-            if (i == q)
-            {
-                for (int m = j; m < right; m++)
-                {
-                    temp[k] = arr[m];
-                    k++;
-                }
-            }
-            else
-            {
-                while(i < q)
-                {
-                    temp[k] = arr[i];
-                    i++;
-                    k++;
-                }
-            }
-            for (int l = 0; l < temp.Length; l++)
-            {
-                arr[l+left] = temp[l];
-            }
-        }
-
-        public void SplitMergeSort(int start, int end)
-        {
-            if(end - start <= 1)
-            {
-                return;
-            }
-            int middle = (end + start) / 2;
-            SplitMergeSort(start, middle);
-            SplitMergeSort(middle, end);
-            Merge(start, end, middle);
-        }
-
-        public void Bubble()
-        {
-            for (int i = 0; i < arr.Length - 1; i++)
-            {
-                for (int j = 0; j < arr.Length - i - 1; j++)
-                {
-                    if(arr[j+1] > arr[j])
-                    {
-                        int item = arr[j + 1];
-                        arr[j + 1] = arr[j];
-                        arr[j] = item;
-                    }
-                }
-            }
-        }
-
-        public void QuickSort(int minIndex, int maxIndex)
-        {
-            if(minIndex < maxIndex)
-            {
-                int pivot = minIndex - 1;
-                for (int i = minIndex; i < maxIndex; i++)
-                {
-                    if (arr[i] < arr[maxIndex])
-                    {
-                        pivot++;
-                        int temp = arr[pivot];
-                        arr[pivot] = arr[i];
-                        arr[i] = temp;
-                    }
-                }
-
-                pivot++;
-                int temp1 = arr[pivot];
-                arr[pivot] = arr[maxIndex];
-                arr[maxIndex] = temp1;
-
-                QuickSort(minIndex, pivot - 1);
-                QuickSort(pivot + 1, maxIndex);
-            }
-        }
-
         public void Counting()
         {
             int max = arr[0];
@@ -279,6 +184,7 @@ namespace Homework4
             }
 
             int[] temp = new int[max - min + 1];
+
 
             for (int i = 0; i < arr.Length; i++)
             {
@@ -316,5 +222,7 @@ namespace Homework4
             }
             return str;
         }
+
+        #endregion
     }
 }

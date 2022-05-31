@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace Vector
 {
@@ -118,7 +115,6 @@ namespace Vector
             return result;
         }
 
-        //homework
         public bool IsPalindrome()
         {
             bool result = false;
@@ -133,7 +129,6 @@ namespace Vector
             return result;
         }
         
-        //homework
         public Pair LongestSequenceOfIdenticalNumbers()
         {
             Pair[] pairs = new Pair[arr.Length];
@@ -170,6 +165,119 @@ namespace Vector
             return resultPair;
         }
 
+        public void Merge(int left, int right, int q)
+        {
+            int i = left;
+            int j = q;
+            int[] temp = new int[right - left];
+            int k = 0;
+            while (i < q && j < right)
+            {
+                if (arr[i] < arr[j])
+                {
+                    temp[k] = arr[i];
+                    i++;
+                }
+                else
+                {
+                    temp[k] = arr[j];
+                    j++;
+                }
+                k++;
+            }
+            if (i == q)
+            {
+                for (int m = j; m < right; m++)
+                {
+                    temp[k] = arr[m];
+                    k++;
+                }
+            }
+            else
+            {
+                while (i < q)
+                {
+                    temp[k] = arr[i];
+                    i++;
+                    k++;
+                }
+            }
+            for (int l = 0; l < temp.Length; l++)
+            {
+                arr[l + left] = temp[l];
+            }
+        }
+
+        public void SplitMergeSort(int start, int end)
+        {
+            if(end - start <= 1)
+            {
+                return;
+            }
+            int middle = (end + start) / 2;
+            SplitMergeSort(start, middle);
+            SplitMergeSort(middle, end);
+            Merge(start, end, middle);
+        }
+
+        //для вхідного масиву
+        public static void Merge(int[] arr_, int left, int right, int q)
+        {
+            int i = left;
+            int j = q;
+            int[] temp = new int[right - left];
+            int k = 0;
+            while (i < q && j < right)
+            {
+                if (arr_[i] < arr_[j])
+                {
+                    temp[k] = arr_[i];
+                    i++;
+                }
+                else
+                {
+                    temp[k] = arr_[j];
+                    j++;
+                }
+                k++;
+            }
+            if (i == q)
+            {
+                for (int m = j; m < right; m++)
+                {
+                    temp[k] = arr_[m];
+                    k++;
+                }
+            }
+            else
+            {
+                while (i < q)
+                {
+                    temp[k] = arr_[i];
+                    i++;
+                    k++;
+                }
+            }
+            for (int l = 0; l < temp.Length; l++)
+            {
+                arr_[l + left] = temp[l];
+            }
+        }
+
+        //для вхідного масиву
+        public static void SplitMergeSort(int[] arr_, int start, int end)
+        {
+            if (end - start <= 1)
+            {
+                return;
+            }
+            int middle = (end + start) / 2;
+            SplitMergeSort(arr_, start, middle);
+            SplitMergeSort(arr_, middle, end);
+            Merge(arr_, start, end, middle);
+        }
+
+
 
         public void Bubble()
         {
@@ -184,6 +292,32 @@ namespace Vector
                         arr[j] = item;
                     }
                 }
+            }
+        }
+
+        public void QuickSort(int minIndex, int maxIndex)
+        {
+            if(minIndex < maxIndex)
+            {
+                int pivot = minIndex - 1;
+                for (int i = minIndex; i < maxIndex; i++)
+                {
+                    if (arr[i] < arr[maxIndex])
+                    {
+                        pivot++;
+                        int temp = arr[pivot];
+                        arr[pivot] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+
+                pivot++;
+                int temp1 = arr[pivot];
+                arr[pivot] = arr[maxIndex];
+                arr[maxIndex] = temp1;
+
+                QuickSort(minIndex, pivot - 1);
+                QuickSort(pivot + 1, maxIndex);
             }
         }
 
@@ -205,7 +339,6 @@ namespace Vector
 
             int[] temp = new int[max - min + 1];
 
-
             for (int i = 0; i < arr.Length; i++)
             {
                 temp[arr[i] - min]++;
@@ -219,11 +352,8 @@ namespace Vector
                     k++;
                 }
             }
-
-
         }
 
-        //homework
         public void Reversal()
         {
             int[] resultArr = new int[arr.Length];
@@ -234,6 +364,94 @@ namespace Vector
                 j--;
             }
             arr = resultArr;
+        }
+
+        public void MergeSortFile(string fileName)
+        {
+            string line = VectorIO.ReadArrayStringFromFile(fileName);
+
+            int count = line.Split(' ').Length;
+            int avg = count / 2;
+            int[] array1 = new int[avg];
+            int[] array2;
+            if (count%2 == 0)
+            {
+                array2 = new int[avg];
+            }
+            else
+            {
+                array2 = new int[avg + 1];
+            }
+
+            for (int i = 0; i < array1.Length; i++)
+            {
+                array1[i] = Convert.ToInt32(line.Split(' ')[i]);
+            }
+            SplitMergeSort(array1, 0, array1.Length);
+            for (int i = 0; i < array2.Length; i++)
+            {
+                array2[i] = Convert.ToInt32(line.Split(' ')[avg + i]);
+                
+            }
+            SplitMergeSort(array2, 0, array2.Length);
+
+            int i1 = 0, j1 = 0;
+            int k = 0;
+            string result = "";
+            while(k!= count)
+            {
+                if(i1 == array1.Length || array1[i1] > array2[j1])
+                {
+                    result += array2[j1] + " ";
+                    j1++;
+                    k++;
+                }
+                else if(j1 == array2.Length || array1[i1] <= array2[j1])
+                {
+                    result += array1[i1] + " ";
+                    i1++;
+                    k++;
+                }  
+            }
+            VectorIO.WriteSortedArrayToFile(result, "sortedArray.txt");
+        }
+
+        public void HeapSort()
+        {
+            int n = arr.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                Heapify(n, i);
+            }
+            for (int i = n - 1; i > 0; i--)
+            {
+                int temp = arr[0];
+                arr[0] = arr[i];
+                arr[i] = temp;
+                Heapify(i, 0);
+            }
+        }
+
+        public void Heapify(int n, int i)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            if (left < n && arr[left] > arr[largest])
+            {
+                largest = left;
+            }
+            if (right < n && arr[right] > arr[largest])
+            {
+                largest = right;
+            }
+            if (largest != i)
+            {
+                int item = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = item;
+                Heapify(n, largest);
+            }
         }
 
         public override string ToString()
