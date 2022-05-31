@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace Homework2
-{
+{//ddhfhgjfjfj
     class Buy
     {
         #region Field
