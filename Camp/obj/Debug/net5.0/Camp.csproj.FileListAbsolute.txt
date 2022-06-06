@@ -29,3 +29,4 @@ E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.dll
 E:\.NET-Camp\Camp\obj\Debug\net5.0\ref\Camp.dll
 E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.pdb
 E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.genruntimeconfig.cache
+E:\.NET-Camp\Camp\obj\Debug\net5.0\Camp.csproj.AssemblyReference.cache

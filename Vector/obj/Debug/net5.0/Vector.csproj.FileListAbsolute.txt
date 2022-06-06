@@ -13,3 +13,4 @@ E:\.NET-Camp\Vector\obj\Debug\net5.0\Vector.dll
 E:\.NET-Camp\Vector\obj\Debug\net5.0\ref\Vector.dll
 E:\.NET-Camp\Vector\obj\Debug\net5.0\Vector.pdb
 E:\.NET-Camp\Vector\obj\Debug\net5.0\Vector.genruntimeconfig.cache
+E:\.NET-Camp\Vector\obj\Debug\net5.0\Vector.csproj.AssemblyReference.cache
