@@ -103,6 +103,7 @@ namespace Homework5
 
             int count = line.Split(' ').Length;
             int avg = count / 2;
+            //Не можна 2 одночасно масиви створювати. Умова, що не вистачає оперативки. Можна користуватись тільки одним половинним.
             int[] array1 = new int[avg];
             int[] array2;
             if (count%2 == 0)
