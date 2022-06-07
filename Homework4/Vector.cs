@@ -4,7 +4,7 @@ using System.IO;
 namespace Homework4
 {
     class Vector
-    {
+    { // Ваш номер 8.
         int[] arr;
 
         public int this[int index]
@@ -216,6 +216,7 @@ namespace Homework4
             }
             int middle = (end + start) / 2;
             SplitMergeSort(start, middle);
+            // Має бути SplitMergeSort(middle+1, end); 
             SplitMergeSort(middle, end);
             Merge(start, end, middle);
         }
