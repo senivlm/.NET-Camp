@@ -9,10 +9,12 @@ namespace Homework5
 {
     class VectorIO
     {
-
+//Ідея правильна. молодець. Але треба пічищати деталі.
         public static string ReadArrayStringFromFile(string fileName)
         {
             StreamReader sr = new StreamReader(fileName);
+          // Бажано працювати з колекцією стрічок, а не однією.
+            
             string line = sr.ReadLine();
             sr.Close();
             return line;
