@@ -20,7 +20,7 @@ namespace Homework6
         public ElectricCompany(string fileName)
         {
             using (StreamReader reader = new StreamReader(fileName))
-            {
+            {// Краще працювати з класом, а не з кортежем. крім того розділяти інформацію про квартиру(номер, власника) та заміри.
                 customers = new List<(uint, string, uint, uint, DateTime, DateTime, DateTime, uint)>();
                 string line = reader.ReadLine();
                 ParseToNumberOfApartmentsAndNumberOfQuarter(line);
