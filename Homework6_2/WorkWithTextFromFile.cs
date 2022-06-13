@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Homework6_2
 {
     class WorkWithTextFromFile
-    {
+    {// За  умовою текст зливати в одну стрічку не можна!
         private string text;
         private string[] sentences;
 
@@ -24,7 +24,7 @@ namespace Homework6_2
         #region Methods
 
         public void WriteEachSentenceToFile()
-        {
+        {// Чи вмієте самі створювати регулярні вирази?
             sentences = Regex.Split(text, @"(?<=[\.!\?])\s+");
             using (StreamWriter writer = new StreamWriter("Result.txt"))
             {
