@@ -4,6 +4,7 @@ using System.IO;
 
 //вибачте, що не вклався в дедлайн, не міг зробити раніше
 //друге завдання буде зроблено 6.06 до вечора
+//Дякую за коментар.
 namespace Homework6
 {
     class ElectricCompany
@@ -55,6 +56,7 @@ namespace Homework6
             {
                 throw new FormatException(exception);
             }
+            //цей виняток залишиться неопрацьованим
             this.numberOfApartments = numberOfApartments;
             if (quarter > 4)
             {
@@ -117,7 +119,7 @@ namespace Homework6
         }
 
         private string[] MonthsName()
-        {
+        {//можна було enum використати
             string[] months = new string[3];
             switch (quarter)
             {
