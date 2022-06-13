@@ -7,7 +7,7 @@ namespace Homework6_2
     class Program
     {
         static void Main(string[] args)
-        {
+        {//Нічого захищати не треба?
             WorkWithTextFromFile workWithText = new WorkWithTextFromFile("text.txt");
             Console.WriteLine(workWithText);
             workWithText.WriteEachSentenceToFile();
