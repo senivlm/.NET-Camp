@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Homework7
 {
     class ErrorLog
-    {
+    {//Не побачила роботи з датами!
         private readonly string fileName = "errorLog.txt";
         private StreamWriter writer;
 
