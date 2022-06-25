@@ -1,0 +1,15 @@
+Total amount of each product (in grams):
+Product: Яйця, gramm: 100
+Product: Помідори, gramm: 250
+Product: Капуста, gramm: 50
+Product: Хліб, gramm: 100
+Product: М'ясо, gramm: 1100
+Product: Огірки, gramm: 0
+
+Total price of each product:
+Product: Яйця, general price: 0,05
+Product: Помідори, general price: 0,32
+Product: Капуста, general price: 0,03
+Product: Хліб, general price: 0,16
+Product: М'ясо, general price: 4,97
+Product: Огірки, general price: 0,00
