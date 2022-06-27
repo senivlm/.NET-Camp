@@ -7,7 +7,7 @@ namespace Homework9
     class Program
     {
         static void Main(string[] args)
-        {
+        {//Не знайшла 10
             Dictionary<Currency, double> cRate = new();
             try
             {
