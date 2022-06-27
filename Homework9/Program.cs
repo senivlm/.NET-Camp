@@ -5,7 +5,7 @@ using System.IO;
 namespace Homework9
 {
     class Program
-    {
+    {// Молодець!
         static void Main(string[] args)
         {
             Dictionary<Currency, double> cRate = new();
