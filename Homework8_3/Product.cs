@@ -59,8 +59,6 @@
             Price += Price * (percent / 100);
         }
 
-
-
         public override string ToString()
         {
             return string.Format("Product name: {0}, price: {1}, weight: {2}", productName, price, weight);
@@ -68,7 +66,12 @@
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if(obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            Product product = (Product)obj;
+            return this.ProductName == product.ProductName;
         }
 
         public override int GetHashCode()

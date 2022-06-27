@@ -45,12 +45,12 @@ namespace Homework8_3
             productList1.Add(new Product("chocolate", 40, 3));
             Storage storage1 = new Storage(productList1);
 
+            var exceptProducts = storage.GetExceptProducts(storage1);
+            var intersectProducts = storage.GetIntersectProducts(storage1);
+            var unionProducts = storage.GetUnionProducts(storage1);
+            
             Console.WriteLine("Storage №1:\n" + storage);
             Console.WriteLine("Storage №2:\n" + storage1);
-            var exceptProducts = productList.Except(productList1, new ProductComparer());
-            var intersectProducts = productList.Intersect(productList1, new ProductComparer());
-            var unionProducts = productList.Union(productList1, new ProductComparer());
-            
             Console.WriteLine("Products which are in the first storage and aren`t in the second storage:");
             foreach (var item in exceptProducts)
             {

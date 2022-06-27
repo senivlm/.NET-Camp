@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Homework8_3
 {
@@ -106,6 +107,18 @@ namespace Homework8_3
             }
         }
 
+        public IEnumerable<Product> GetExceptProducts(Storage storage)
+        {
+            return this.productList.Except(storage.productList, new ProductComparer());
+        }
+        public IEnumerable<Product> GetIntersectProducts(Storage storage)
+        {
+            return this.productList.Intersect(storage.productList, new ProductComparer());
+        }
+        public IEnumerable<Product> GetUnionProducts(Storage storage)
+        {
+            return this.productList.Union(storage.productList, new ProductComparer());
+        }
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
@@ -115,7 +128,6 @@ namespace Homework8_3
         {
             return base.GetHashCode();
         }
-
         public override string ToString()
         {
             string result = "";
