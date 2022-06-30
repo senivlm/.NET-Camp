@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 
-//вибачте, що не вклався в дедлайн, не міг зробити раніше
-//друге завдання буде зроблено 6.06 до вечора
 namespace Homework6
 {
+    enum Quarter { First = 1, Second, Third, Fourth }
+
     class ElectricCompany
     {
         #region Fields
 
-        private List<(uint, string, uint, uint, DateTime, DateTime, DateTime, uint)> customers;
+        private List<ApartmentReport> customers;
         private uint numberOfApartments;
-        private uint quarter;
+        private Quarter quarter;
         const uint pricePerKilowatt = 4;
 
         #endregion
@@ -21,7 +21,7 @@ namespace Homework6
         {
             using (StreamReader reader = new StreamReader(fileName))
             {
-                customers = new List<(uint, string, uint, uint, DateTime, DateTime, DateTime, uint)>();
+                customers = new List<ApartmentReport>();
                 string line = reader.ReadLine();
                 ParseToNumberOfApartmentsAndNumberOfQuarter(line);
                 int i = 0;
@@ -29,7 +29,7 @@ namespace Homework6
                 {
                     line = reader.ReadLine();
                     string[] items = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    customers.Add(Parse(line));
+                    AddCustomer(line);
                     i++;
                 }
             }
@@ -40,34 +40,34 @@ namespace Homework6
         private void ParseToNumberOfApartmentsAndNumberOfQuarter(string line)
         {
             string[] firstLine = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            uint numberOfApartments, quarter;
+            uint numberOfApartments = 0;
+            int quarterNumber;
             string exception = "";
             if(!uint.TryParse(firstLine[0], out numberOfApartments))
             {
-                exception = "Invalid number of apartments format";
+                exception += "Invalid number of apartments format";
             }
-            if (!uint.TryParse(firstLine[1], out quarter))
+            if (!int.TryParse(firstLine[1], out quarterNumber))
             {
-                exception = "Invalid quarter format";
+                exception += "Invalid quarter format";
             }
-            
+
             if(exception.Length != 0)
             {
                 throw new FormatException(exception);
             }
             this.numberOfApartments = numberOfApartments;
-            if (quarter > 4)
+            if (Enum.IsDefined(typeof(Quarter), quarterNumber))
             {
-                exception = "Invalid quarter format";
+                this.quarter = (Quarter)quarterNumber;
             }
             else
             {
-                this.quarter = quarter;
+                throw new IndexOutOfRangeException("No such quarter exists");
             }
-            
         }
 
-        private static (uint, string, uint, uint, DateTime, DateTime, DateTime, uint) Parse(string line)
+        private void AddCustomer(string line)
         {
             string[] items = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             string exception = "";
@@ -113,7 +113,7 @@ namespace Homework6
             {
                 price = (outputIndicator - inputIndicator) * pricePerKilowatt;
             }
-            return (apartmentNumber, items[1], inputIndicator, outputIndicator, firstMonth, secondMonth, thirdMonth, price);
+            customers.Add(new ApartmentReport(apartmentNumber, items[1], inputIndicator, outputIndicator, firstMonth, secondMonth, thirdMonth, price));
         }
 
         private string[] MonthsName()
@@ -121,33 +121,32 @@ namespace Homework6
             string[] months = new string[3];
             switch (quarter)
             {
-                case 1: months[0] = "Січень";
+                case Quarter.First: months[0] = "Січень";
                     months[1] = "Лютий";
                     months[2] = "Березень";
                     break;
-                case 2:
+                case Quarter.Second:
                     months[0] = "Квітень";
                     months[1] = "Травень";
                     months[2] = "Червень";
                     break;
-                case 3:
+                case Quarter.Third:
                     months[0] = "Липень";
                     months[1] = "Серпень";
                     months[2] = "Вересень";
                     break;
-                case 4:
+                case Quarter.Fourth:
                     months[0] = "Жовтень";
                     months[1] = "Листопад";
                     months[2] = "Грудень";
                     break;
             }
-
             return months;
         } 
 
-        public void WriteReportToFile()
+        public void WriteReportToFile(string fileName)
         {
-            using(StreamWriter writer = new StreamWriter("report.txt", false))
+            using(StreamWriter writer = new StreamWriter(fileName, false))
             {
                 writer.WriteLine(this.ToString());
             }
@@ -157,14 +156,15 @@ namespace Homework6
         {
             foreach (var item in customers)
             {
-                if(item.Item1 == numberOfApartment)
+                if (item.ApartmentNumber == numberOfApartment)
                 {
                     using (StreamWriter writer = new StreamWriter($"report(apartment №{numberOfApartment}).txt", false))
                     {
                         string[] months = MonthsName();
                         string title = $"Квартира\tПрiзвище\t{months[0]}\t\t{months[1]}\t\t{months[2]}\tВитрати";
                         writer.WriteLine(title);
-                        writer.WriteLine($"{item.Item1}\t\t{item.Item2}\t{item.Item5.ToShortDateString()}\t{item.Item6.ToShortDateString()}\t{item.Item7.ToShortDateString()}\t{item.Item8}");
+                        writer.WriteLine($"{item.ApartmentNumber}\t\t{item.OwnerName}\t{item.FirstMonth.ToShortDateString()}" +
+                            $"\t{item.SecondMonth.ToShortDateString()}\t{item.ThirdMonth.ToShortDateString()}\t{item.AmountOfPayment}");
                     }
                 }
             }
@@ -176,10 +176,10 @@ namespace Homework6
             string customerName = "there are no clients with debts";
             foreach (var item in customers)
             {
-                if(largestDept < item.Item8)
+                if (largestDept < item.AmountOfPayment)
                 {
-                    largestDept = item.Item8;
-                    customerName = item.Item2;
+                    largestDept = item.AmountOfPayment;
+                    customerName = item.OwnerName;
                 }
             }
             return customerName;
@@ -190,9 +190,9 @@ namespace Homework6
             uint numberOfApartment = default;
             foreach (var item in customers)
             {
-                if(item.Item8 == 0)
+                if (item.AmountOfPayment == 0)
                 {
-                    numberOfApartment = item.Item1;
+                    numberOfApartment = item.ApartmentNumber;
                 }
             }
             return numberOfApartment;
@@ -205,8 +205,8 @@ namespace Homework6
             TimeSpan interval;
             foreach (var item in customers)
             {
-                interval = today - item.Item7;
-                period += $"{item.Item2}: {interval.Days}\n";
+                interval = today - item.ThirdMonth;
+                period += $"{item.OwnerName}: {interval.Days}\n";
             }
             return period;
         }
@@ -228,7 +228,8 @@ namespace Homework6
             string line = "";
             foreach (var item in customers)
             {
-                line += $"{item.Item1}\t\t{item.Item2}\t{item.Item5.ToShortDateString()}\t{item.Item6.ToShortDateString()}\t{item.Item7.ToShortDateString()}\t{item.Item8}\n";
+                line += $"{item.ApartmentNumber}\t\t{item.OwnerName}\t{item.FirstMonth.ToShortDateString()}\t" +
+                    $"{item.SecondMonth.ToShortDateString()}\t{item.ThirdMonth.ToShortDateString()}\t{item.AmountOfPayment}\n";
             }
             return $"{title}\n{line}";
             

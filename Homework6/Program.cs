@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace Homework6
 {
@@ -11,7 +9,7 @@ namespace Homework6
             try
             {
                 ElectricCompany electricCompany = new ElectricCompany("electricity.txt");
-                electricCompany.WriteReportToFile();
+                electricCompany.WriteReportToFile("../../../report.txt");
                 electricCompany.WriteReportForCustomerToFile(20);
                 Console.WriteLine("Client with the largest debt: " + electricCompany.ClientWithLargestDebt());
                 Console.WriteLine("Apartment when electricity was not used: " + electricCompany.ApartmentWhenElectricityNotUsed());
@@ -21,7 +19,11 @@ namespace Homework6
             {
                 Console.WriteLine(e.Message);
             }
-            catch(Exception e)
+            catch(ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
