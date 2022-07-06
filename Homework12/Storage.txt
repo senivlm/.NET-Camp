@@ -1,0 +1,7 @@
+Apple 15 7
+Chicken 120 1000 SecondSort Chicken
+Milk1 20 1 28
+Milk2 25 1 10
+Chocolate 20 100
+Cheese1 120 1 60
+Cheese2 170 1 14
