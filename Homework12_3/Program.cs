@@ -7,7 +7,7 @@ namespace Homework12_3
     class Program
     {
         static void Main(string[] args)
-        {
+        {// COMENT
             string expression = "1 + 4 * 6 - 5";
             PostfixForm postfixForm = new(expression);
             Console.WriteLine("Infix form: " + postfixForm.Expression);
