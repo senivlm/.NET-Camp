@@ -5,7 +5,7 @@ using System.Linq;
 namespace Homework8_3
 {
     class Storage
-    {
+    {//Операції з множинами реалізовані правильно!
         private List<Product> productList;     
 
         
