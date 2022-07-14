@@ -8,6 +8,7 @@ namespace Homework10
     {
         private Dictionary<string, string> vocabluary;
         private string text;
+        // полем краще мати сам словник, а не шлях до нього. Шлях це параметр методу, який завантажує словник. Вам тільки там потрібний шлях.
         private string pathToDictionary;
         private string pathToText;
         private const int countVariable = 3;
@@ -85,7 +86,9 @@ namespace Homework10
                     {
                         AddToDictionary(tempWord);
                         counter++;
-                    }
+                    }//Ви не врахували ситуацію, коли 3 спроби пройдуть,а користувач так і не додасть запропонованого транслятора.
+                    Навіть, якщо користувач запише у словник Ви його не намагаєтесь повторно використати для трансляції
+                    
                     if (isUppercase)
                     {
                         tempWord = vocabluary[tempWord].Substring(0, 1).ToUpper() + vocabluary[tempWord].Substring(1).ToLower();
