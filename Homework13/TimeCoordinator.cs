@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Homework13
 {
     internal class TimeCoordinator
-    {
+    {// Є тільки канва програми. повністю умова задачі не виконана.
         private int timeCounter = 3;
 
         public List<string> Cordinate(List<Cassa> casses, string path)
@@ -33,7 +33,7 @@ namespace Homework13
                 foreach (var item in casses)
                 {
                     if(!item.IsEmpty() && --item.Peek().TimeServise <= 0)
-                    {
+                    {// треба вказати, якою касою.
                         result.Add($"Cassa {i++}: {item.Dequeue()} has been observed");
 
                         Console.WriteLine(result[result.Count - 1]);
